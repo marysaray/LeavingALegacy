@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LeavingALegacy.Models;
 
 namespace LeavingALegacy
 {
@@ -61,7 +62,7 @@ namespace LeavingALegacy
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public async Task ConfigureAsync(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -89,6 +90,11 @@ namespace LeavingALegacy
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            var serviceProvider = app.ApplicationServices.GetRequiredService<IServiceProvider>().CreateScope();
+            // Create default roles
+            await IdentityHelper.CreateRoles(serviceProvider.ServiceProvider, IdentityHelper.Admin, IdentityHelper.Member);
+            // Create default admin
         }
     }
 }
