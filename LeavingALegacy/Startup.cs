@@ -62,7 +62,7 @@ namespace LeavingALegacy
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public async Task ConfigureAsync(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -93,7 +93,7 @@ namespace LeavingALegacy
 
             var serviceProvider = app.ApplicationServices.GetRequiredService<IServiceProvider>().CreateScope();
             // Create default roles
-            await IdentityHelper.CreateRoles(serviceProvider.ServiceProvider, IdentityHelper.Admin, IdentityHelper.Member);
+            IdentityHelper.CreateRoles(serviceProvider.ServiceProvider, IdentityHelper.Admin, IdentityHelper.Member).Wait();
             // Create default admin
         }
     }
