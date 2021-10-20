@@ -1,8 +1,10 @@
+[![.NET](https://github.com/marysaray/LeavingALegacy/actions/workflows/dotnet.yml/badge.svg)](https://github.com/marysaray/LeavingALegacy/actions/workflows/dotnet.yml)
+
 # Leaving A Legacy
 Building a website in hopes to connect with my heritage and ancestors in Cambodia 
 while helping my family in 
 
-**Phnom Srey Snam || Srok Srey Snam : Kat Siem Reap** 
+**Phnom Srey Snam || Srok Srey Snam : Sangkat Siem Reap** 
 
 to *develop a better ecosystem and economy for present and future generations.*
 
