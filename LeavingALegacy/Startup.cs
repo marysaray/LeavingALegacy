@@ -95,6 +95,7 @@ namespace LeavingALegacy
             // Create default roles
             IdentityHelper.CreateRoles(serviceProvider.ServiceProvider, IdentityHelper.Admin, IdentityHelper.Member).Wait();
             // Create default admin
+            IdentityHelper.CreateDefaultUser(serviceProvider.ServiceProvider, IdentityHelper.Admin).Wait();
         }
     }
 }
