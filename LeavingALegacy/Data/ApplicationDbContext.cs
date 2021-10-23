@@ -15,5 +15,7 @@ namespace LeavingALegacy.Data
         }
 
         public DbSet<Administrator> Administrators { get; set; }
+
+        public DbSet<Organization> Organizations { get; set; }
     }
 }
