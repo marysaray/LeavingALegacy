@@ -16,5 +16,7 @@ namespace LeavingALegacy.Models
         public string Description { get; set; }
 
         public Administrator Manager { get; set; }
+
+        public Location Place { get; set; }
     }
 }
