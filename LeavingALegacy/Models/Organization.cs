@@ -28,6 +28,10 @@ namespace LeavingALegacy.Models
 
         public List<Administrator> Managers { get; set; }
 
+        public Administrator SelectManager { get; set; }
+
         public List<Location> Places { get; set; }
+
+        public Location SelectPlace { get; set; }
     }
 }
