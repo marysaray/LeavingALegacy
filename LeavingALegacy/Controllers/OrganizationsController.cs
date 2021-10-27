@@ -46,7 +46,15 @@ namespace LeavingALegacy.Controllers
         // GET: Organizations/Create
         public IActionResult Create()
         {
-            return View();
+           
+            OrganizationCreateViewModel viewModel = new();
+            // Get list of Administrators to the view model
+            viewModel.Managers = _context.Administrators.OrderBy(a => a.FullName).ToList();
+
+            // Get list of Locations to the view model
+            viewModel.Places = _context.Locations.OrderBy(i => i.SecId).ToList();
+            
+            return View(viewModel);
         }
 
         // POST: Organizations/Create
@@ -54,7 +62,7 @@ namespace LeavingALegacy.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Development,Description")] Organization organization)
+        public async Task<IActionResult> Create(OrganizationCreateViewModel organization)
         {
             if (ModelState.IsValid)
             {
