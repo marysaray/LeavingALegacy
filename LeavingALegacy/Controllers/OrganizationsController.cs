@@ -70,6 +70,9 @@ namespace LeavingALegacy.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            organization.Managers = _context.Administrators.OrderBy(a => a.FullName).ToList();
+            organization.Places = _context.Locations.OrderBy(i => i.SecId).ToList();
+
             return View(organization);
         }
 
