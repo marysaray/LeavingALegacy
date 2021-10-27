@@ -66,7 +66,25 @@ namespace LeavingALegacy.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(organization);
+                Organization newOrganization = new()
+                {
+                    Development = organization.Development,
+                    Description = organization.Description,
+                    Manager = new Administrator()
+                    {
+                        Id = organization.SelectManager
+                    },
+                    Place = new Location()
+                    {
+                        SecId = organization.SelectPlace
+                    }
+                };
+
+                // override EF default settings to not modify exisiting admin and location object
+                _context.Entry(newOrganization.Manager).State = EntityState.Unchanged;
+                _context.Entry(newOrganization.Place).State = EntityState.Unchanged;
+
+                _context.Add(newOrganization);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
