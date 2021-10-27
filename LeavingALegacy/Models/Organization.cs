@@ -19,4 +19,19 @@ namespace LeavingALegacy.Models
 
         public Location Place { get; set; }
     }
+
+    public class OrganizationCreateViewModel
+    { 
+        public string Development { get; set; }
+
+        public string Description { get; set; }
+
+        public List<Administrator> Managers { get; set; }
+
+        public int SelectManager { get; set; }
+
+        public List<Location> Places { get; set; }
+
+        public int SelectPlace { get; set; }
+    }
 }
